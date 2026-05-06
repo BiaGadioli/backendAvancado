@@ -6,17 +6,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-author-list',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div style="padding: 50px; text-align: center;">
-      <h2 style="color: #818cf8;">Author Management Panel</h2>
-      <div *ngIf="loading" style="color: #94a3b8;">
-        <p>🔄 Aguardando conexão com o backend (Incompatibilidade Proposital)...</p>
-      </div>
-      <div *ngIf="errorMessage" style="background: rgba(239, 68, 68, 0.1); padding: 20px; border-radius: 10px; color: #fca5a5;">
-        {{ errorMessage }}
-      </div>
-    </div>
-  `
+  templateUrl: './author-list.html',
+  styleUrls: ['./author-list.css']
 })
 export class AuthorListComponent implements OnInit {
   authors: Author[] = [];
@@ -36,7 +27,7 @@ export class AuthorListComponent implements OnInit {
         this.loading = false;
       },
       error: (err) => {
-        this.errorMessage = 'Failed to load authors. The backend might be incompatible.';
+        this.errorMessage = 'CRITICAL ERROR: Backend connection refused. API endpoint /api/v1/authors not found.';
         this.loading = false;
         console.error(err);
       }
