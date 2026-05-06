@@ -8,7 +8,7 @@ import { AuthorListComponent } from './components/author-list/author-list';
   template: `
     <main>
       <nav class="glass-nav">
-        <div class="logo">FRANKENSTEIN <span>MONOLITH</span></div>
+        <div class="logo">Backend <span>Avançado</span></div>
       </nav>
       
       <app-author-list></app-author-list>
