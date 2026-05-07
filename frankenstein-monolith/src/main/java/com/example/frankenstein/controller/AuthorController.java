@@ -20,9 +20,15 @@ public class AuthorController {
 
     @PostMapping
     public Author save(@RequestBody Author author) {
+
+        if (author.getName() == null || author.getName().isBlank()) {
+            throw new RuntimeException("Nome obrigatório!");
+        }
+
         if (author.getCpf() == null || author.getCpf().length() != 11) {
             throw new RuntimeException("CPF Inválido!");
         }
+
         if (author.getAnnualIncome() > 50000) {
             author.setAnnualIncome(author.getAnnualIncome() * 0.85);
         } else {
